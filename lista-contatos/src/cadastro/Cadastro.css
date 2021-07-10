@@ -1,0 +1,58 @@
+#titleCad {
+    text-align: center;
+}
+
+#abaCadastro {
+    display: flex;
+    flex-direction: column;
+}
+
+#labelNome {
+    margin-left: 5%;
+    display: block;
+}
+
+#nome {
+    margin-left: 5%;
+    width: 85%;
+    height: 25px;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#labelTelefone {
+    margin-left: 5%;
+    margin-top: 15px;
+    display: block;
+}
+
+#telefone {
+    margin-left: 5%;
+    width: 85%;
+    height: 25px;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#salvar {
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 27%;
+    width: 45%;
+    height: 25px;
+    background-color: green;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+}
+
+#salvar:hover {
+    cursor: pointer;
+    background-color: rgb(9, 70, 9);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
