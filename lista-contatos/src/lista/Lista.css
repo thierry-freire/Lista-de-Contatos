@@ -1,0 +1,8 @@
+#abaLista {
+    display: flex;
+    flex-direction: column;
+}
+
+#titleList {
+    text-align: center;
+}

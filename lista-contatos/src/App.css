@@ -1,0 +1,78 @@
+#root {
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.App {
+  background-color: #282c34;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  color: white;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(163, 231, 220);
+}
+
+#conteudo {
+  position: absolute;
+  background-color: #282c34;
+  bottom: 0px;
+  top: 110px;
+  left: 0px;
+  right: 0px;
+  color: white;
+  display: flex;
+}
+
+#cadastro {
+  position:relative;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 100%;
+  border-right-style: solid;
+  border-right-color: rgb(163, 231, 220);
+  float: left;
+}
+
+#lista {
+  position:relative;
+  top: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
