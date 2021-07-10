@@ -28,7 +28,7 @@ function getCadastroPage() {
 
 function getListaPage() {
   return (
-    <Lista />
+    <Lista/>
   );
 }
 
