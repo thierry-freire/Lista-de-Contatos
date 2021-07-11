@@ -1,0 +1,24 @@
+{
+  "name": "lista-de-contatos",
+  "version": "1.0.0",
+  "description": "Uma lista de contatos criado com ReactJs, NodeJs e MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thierry-freire/Lista-de-Contatos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thierry-freire/Lista-de-Contatos/issues"
+  },
+  "homepage": "https://github.com/thierry-freire/Lista-de-Contatos#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
