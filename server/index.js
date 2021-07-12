@@ -4,8 +4,15 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.get("/api", (req, res) => {
-    res.json({ express: "Hello from server!" });
+app.route("/api/cadastro").post((req, res) => {
+  console.log(req.body);
+  //var { nome, telefone } = req.body;    
+  //res.json({ message: `${nome} cadastrado com o telefone: ${telefone}` });
+  res.json({message: "teste"});
+});
+
+app.route("/api/listar").get((req, res) => {
+  res.json({message: "Teste"});
 });
 
 app.listen(PORT, () => {

@@ -1,6 +1,6 @@
 import './Cadastro.css'
 import React from 'react';
-
+import axios from 'axios';
 
 class Cadastro extends React.Component {
     constructor(props) {
@@ -31,14 +31,28 @@ class Cadastro extends React.Component {
         });
     }
 
-    handleCLick = async () => {
-        var response = await fetch('/api');
-        var body = await response.json();
-        if (body != null) {
-            alert(body.express);
+    handleCLick = async() => {
+        if (this.state.nomeValue === '') {
+            alert("Campo nome não preenchido.");
+        } else if (this.state.telefoneValue === '') {
+            alert("Campo telefone não preenchido.");
         } else {
-            throw Error(body.message);
-        }            
+            var data = ({
+                nome: this.state.nomeValue,
+                telefone: this.state.telefoneValue
+            });
+    
+            var retorno = await axios.post('/api/cadastro', data);
+            var mensagem = retorno.data;
+
+            if (retorno.status === 200 || retorno.status === 304) {
+                alert(mensagem.message);
+            } else {
+                alert(`Erro ${retorno.status}: ${retorno.statusText}`);
+            }
+
+        }
+
     }
 }
 
