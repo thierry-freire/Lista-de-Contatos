@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 app.route("/api/cadastro").post((req, res) => {
   var { nome, telefone } = req.body;    
