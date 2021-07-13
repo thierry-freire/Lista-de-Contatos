@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/thierry-freire/Lista-de-Contatos#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.10",
+    "mongoose": "^5.13.2"
   }
 }
