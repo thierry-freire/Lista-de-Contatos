@@ -6,46 +6,39 @@ class Lista extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.contatos = this.getDados();
+        this.contatos = [];
     }
 
     render() {
-        /*const contatos = await this.getDados();
+        this.getDados();
 
-        var listaContatos;
-
-        for (var contato in contatos) {
-            listaContatos = (
-              <h3>{contato.nome}</h3>
+        var listaContatos = this.contatos.map((contato, index) => {
+            return(
+                <div className="Contato" key={index}>
+                    <h3>{contato.nome}</h3>
+                </div>
             );
-        }*/
+        });
 
-        return (
+        console.log(listaContatos);
+
+        return(
             <div id="abaLista">
                 <h2 id="titleList">Contatos Salvos</h2>
                 <div id="listaContatos">
+                    {listaContatos}
                 </div>
             </div>
         );
     }
 
-    componentDidMount() {
-        var oneSecond = 1000;
-        setInterval(async () => {
-            await this.render();
-        }, oneSecond);
-    }
-
-    async getDados() {
-        var retorno = await axios.get('/api/listar');
-        var dados = retorno.data;
-
-        if (retorno.status === 200 || retorno.status === 304) {
-           return(dados.data);
-        } else {
-            alert(`Erro ${retorno.status}: ${retorno.statusText}`);
-        }
-
+    getDados() {
+        axios.get('/api/listar').catch(e => {
+            alert(e.message);
+        }).then(retorno => {
+            var data = retorno.data;
+            this.contatos = data.data;         
+        });
     }
     
 }
