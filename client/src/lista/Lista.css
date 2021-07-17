@@ -6,3 +6,8 @@
 #titleList {
     text-align: center;
 }
+
+#listaContatos {
+    width: 85%;
+    left: 10px;
+}

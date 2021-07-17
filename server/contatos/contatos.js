@@ -1,22 +1,25 @@
-const database = require("./../../domain/db.js");
+const contatosSchema = require("./../models/contatos.js");
 
 module.exports = class Contatos {
-    contatos;
-
-    constructor() {
-        this.contatos = database.Mongoose.model('contatos', database.contatosSchema, 'contatos');
-    }
-
-    async save(nome, telefone) {        
-        try {   
-            var contato = new contatos({'nome': nome, 'telefone': telefone});
-            contato.save();
-
+    async save(dados) {     
+        try {
+            await contatosSchema.create(dados.nome, dados.telefone);
         } catch (erro) {
-            return ("Houve um proble na conexão com o banco de dados.");
-        }
+            return(erro.message);
+        }  
 
         return("Contato Salvo com sucesso");
+    }
+
+    async getContatos() {
+        try {
+            var retorno = await contatosSchema.find({});
+        } catch (erro) {
+            return(erro.message);
+        }
+
+        return retorno;
+
     }
 
 }

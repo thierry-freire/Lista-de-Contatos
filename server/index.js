@@ -7,12 +7,12 @@ const utils = new Contatos();
 app.use(express.json());
 
 app.route("/api/cadastro").post(async (req, res) => {
-  var { nome, telefone } = req.body;    
-  res.json({ message: await utils.save(nome, telefone) });
+  res.json({ message: await utils.save(req.body) });
 });
 
-app.route("/api/listar").get((req, res) => {
-  res.json({message: "Teste"});
+app.route("/api/listar").get(async (req, res) => {
+  var data = await utils.getContatos();
+  res.json({'data': data});
 });
 
 app.listen(PORT, () => {
