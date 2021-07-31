@@ -1,44 +1,54 @@
 import './Lista.css';
 import React from 'react';
-import axios from 'axios';
-
 class Lista extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
-        this.contatos = [];
+        this.state = {
+            listaContatos: ''
+        };
+    }
+    
+    componentDidMount() {
+        var contatos = [];
+
+        this.getDados().then(response => {
+            contatos = response;
+        }).catch(err => {
+            alert(err);
+        });
+
+        this.setState({
+            listaContatos: contatos.map((contato, index) => {
+                return(
+                    <div className="Contato" key={index}>
+                        <h3>{contato.nome}</h3>
+                    </div>
+                );
+            })
+        });
+    }
+
+    getDados = async () => {
+        var request = await fetch('api/listar');
+        var response = await request.json();
+
+        if (request.status === 200) {
+            return response;
+        } else {
+            throw Error(request.statusText);
+        }
+        
     }
 
     render() {
-        this.getDados();
-
-        var listaContatos = this.contatos.map((contato, index) => {
-            return(
-                <div className="Contato" key={index}>
-                    <h3>{contato.nome}</h3>
-                </div>
-            );
-        });
-
-        console.log(listaContatos);
-
         return(
             <div id="abaLista">
                 <h2 id="titleList">Contatos Salvos</h2>
                 <div id="listaContatos">
-                    {listaContatos}
+                    {this.state.listaContatos}
                 </div>
             </div>
         );
-    }
-
-    getDados() {
-        axios.get('/api/listar').catch(e => {
-            alert(e.message);
-        }).then(retorno => {
-            var data = retorno.data;
-            this.contatos = data.data;         
-        });
     }
     
 }

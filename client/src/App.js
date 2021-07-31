@@ -12,28 +12,28 @@ class App extends React.Component {
         </header>
         <div id="conteudo">
           <div id="cadastro">
-            {getCadastroPage()}          
+            {this.getCadastroPage()}          
           </div>
           <div id="lista">
-            {getListaPage()}
+            {this.getListaPage()}
           </div>
         </div>
       </div>
     );
   }
 
-}
+  getCadastroPage() {
+    return (
+      <Cadastro/>
+    );
+  }
 
-function getCadastroPage() {
-  return (
-    <Cadastro/>
-  );
-}
+  getListaPage() {
+    return (
+      <Lista/>
+    );
+  }
 
-function getListaPage() {
-  return (
-    <Lista/>
-  );
 }
 
 export default App;
