@@ -40,6 +40,10 @@ class Lista extends React.Component {
         alert('Contato' + idContato + 'apagado com sucesso.');
     }
 
+    editarContato(nome, telefone){
+
+    }
+
     render() {
         return(
             <div id="abaLista">
