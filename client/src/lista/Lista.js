@@ -1,43 +1,43 @@
 import './Lista.css';
 import React from 'react';
+import axios from 'axios';
 class Lista extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            listaContatos: ''
+            contatos: []
         };
     }
     
-    componentDidMount() {
-        var contatos = [];
-
-        this.getDados().then(response => {
-            contatos = response;
+    montaLista() {
+        axios.get('/api/listar').then(resp => {
+            this.setState({
+                contatos: resp.data
+            });
         }).catch(err => {
-            alert(err);
+            alert(err.message)
         });
 
-        this.setState({
-            listaContatos: contatos.map((contato, index) => {
-                return(
-                    <div className="Contato" key={index}>
-                        <h3>{contato.nome}</h3>
+        var listaContatos = [];
+
+        listaContatos = this.state.contatos.map((contato, index) => {
+            return(
+                <div style={{backgroundColor: 'white', color: 'black', marginTop: 10 + 'px'}} key={index}>
+                    <div style={{display: 'flex', width: 100 + '%', marginTop: 10 + 'px'}}>
+                        <input className='NomeContato' id={'nome' + contato._id} style={{marginLeft: 10 + 'px', borderStyle: 'none', width: 85 + '%'}} readOnly={true} type='String' value={contato.nome}/>
+                        <button className='Editar'>Editar</button>
+                        <button className='Excluir'>Excluir</button>
                     </div>
-                );
-            })
+                    <input className='TelefoneContato' id={'telefone' + contato._id} style={{marginLeft: 10 + 'px', borderStyle: 'none', width: 85 + '%'}} readOnly={true} type='String' value={contato.telefone}/>
+                </div>
+            );
         });
+
+        return listaContatos;
     }
 
-    getDados = async () => {
-        var request = await fetch('api/listar');
-        var response = await request.json();
-
-        if (request.status === 200) {
-            return response;
-        } else {
-            throw Error(request.statusText);
-        }
-        
+    excluirContato(idContato) {
+        alert('Contato' + idContato + 'apagado com sucesso.');
     }
 
     render() {
@@ -45,7 +45,7 @@ class Lista extends React.Component {
             <div id="abaLista">
                 <h2 id="titleList">Contatos Salvos</h2>
                 <div id="listaContatos">
-                    {this.state.listaContatos}
+                    {this.montaLista()}
                 </div>
             </div>
         );

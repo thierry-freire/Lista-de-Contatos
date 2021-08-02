@@ -11,3 +11,32 @@
     width: 85%;
     margin: 5%;
 }
+
+.Editar {
+    align-items: center;
+    margin-left: 10px;
+    background-color: yellow;
+    border-style: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.Editar:hover {
+    cursor: pointer;
+    background-color: rgb(175, 212, 38);
+}
+
+.Excluir {
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: red;
+    border-style: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.Excluir:hover {
+    cursor: pointer;
+    background-color: rgb(189, 39, 39);
+}
