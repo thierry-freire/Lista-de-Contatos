@@ -23,10 +23,10 @@ class Lista extends React.Component {
         listaContatos = this.state.contatos.map((contato, index) => {
             return(
                 <div className='Contato' key={index}>
-                    <div style={{display: 'flex', width: 100 + '%', marginTop: 10 + 'px'}}>
+                    <div className="ContatoHeader">
                         <input className='NomeContato' id={'nome' + contato._id} readOnly={true} type='String' value={contato.nome}/>
-                        <button className='Editar'>Editar</button>
-                        <button className='Excluir'>Excluir</button>
+                        <button className='Editar' id={'editar' + contato._id} onClick={() => {this.editarContato(contato)}}>Editar</button>
+                        <button className='Excluir' onClick={() => {this.excluirContato(contato)}}>Excluir</button>
                     </div>
                     <input className='TelefoneContato' id={'telefone' + contato._id} readOnly={true} type='String' value={contato.telefone}/>
                 </div>
@@ -36,12 +36,21 @@ class Lista extends React.Component {
         return listaContatos;
     }
 
-    excluirContato(idContato) {
-        alert('Contato' + idContato + 'apagado com sucesso.');
+    excluirContato(contato) {
+        alert('Contato ' + contato._id + ' apagado com sucesso.');
     }
 
-    editarContato(nome, telefone){
-
+    editarContato(contato){
+        if (document.getElementById('nome' + contato._id).readOnly) {
+            document.getElementById('nome' + contato._id).readOnly = false;
+            document.getElementById('telefone' + contato._id).readOnly = false;
+            document.getElementById('editar' + contato._id).innerHTML = 'Salvar';
+        } else {
+            document.getElementById('nome' + contato._id).readOnly = true;
+            document.getElementById('telefone' + contato._id).readOnly = true;
+            document.getElementById('editar' + contato._id).innerHTML = 'Editar';
+            alert('Contato ' + contato.nome + ' com telefone ' + contato.telefone);
+        }
     }
 
     render() {
