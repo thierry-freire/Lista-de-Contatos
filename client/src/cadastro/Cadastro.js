@@ -45,7 +45,7 @@ class Cadastro extends React.Component {
             var retorno = await axios.post('/api/cadastro', data);
             var mensagem = retorno.data;
 
-            if (retorno.status === 200 || retorno.status === 304) {
+            if (retorno.status === 200) {
                 alert(mensagem.message);
             } else {
                 alert(`Erro ${retorno.status}: ${retorno.statusText}`);
