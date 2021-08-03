@@ -22,13 +22,13 @@ class Lista extends React.Component {
 
         listaContatos = this.state.contatos.map((contato, index) => {
             return(
-                <div style={{backgroundColor: 'white', color: 'black', marginTop: 10 + 'px'}} key={index}>
+                <div className='Contato' key={index}>
                     <div style={{display: 'flex', width: 100 + '%', marginTop: 10 + 'px'}}>
-                        <input className='NomeContato' id={'nome' + contato._id} style={{marginLeft: 10 + 'px', borderStyle: 'none', width: 85 + '%'}} readOnly={true} type='String' value={contato.nome}/>
+                        <input className='NomeContato' id={'nome' + contato._id} readOnly={true} type='String' value={contato.nome}/>
                         <button className='Editar'>Editar</button>
                         <button className='Excluir'>Excluir</button>
                     </div>
-                    <input className='TelefoneContato' id={'telefone' + contato._id} style={{marginLeft: 10 + 'px', borderStyle: 'none', width: 85 + '%'}} readOnly={true} type='String' value={contato.telefone}/>
+                    <input className='TelefoneContato' id={'telefone' + contato._id} readOnly={true} type='String' value={contato.telefone}/>
                 </div>
             );
         });

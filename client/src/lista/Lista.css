@@ -12,6 +12,23 @@
     margin: 5%;
 }
 
+.Contato {
+    background-color: white;
+    color: black;
+}
+
+.NomeContato {
+    margin-left: 10px;
+    border-style: none;
+    width: 85%;
+}
+
+.TelefoneContato {
+    margin-left: 10px;
+    border-style: none;
+    width: 85%;
+}
+
 .Editar {
     align-items: center;
     margin-left: 10px;
