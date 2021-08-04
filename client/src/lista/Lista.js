@@ -1,6 +1,7 @@
 import './Lista.css';
 import React from 'react';
 import axios from 'axios';
+
 class Lista extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +31,7 @@ class Lista extends React.Component {
                         <button className='Editar' id={'editar' + contato._id} onClick={() => {this.editarContato(contato)}}>Editar</button>
                         <button className='Excluir' onClick={() => {this.excluirContato(contato)}}>Excluir</button>
                     </div>
-                    <input className='TelefoneContato' id={'telefone' + contato._id} name='telefoneNovo' onChange={this.handleChange} type='String' defaultValue={contato.telefone}/>
+                    <input className='TelefoneContato' id={'telefone' + contato._id} name='telefoneNovo' onChange={this.handleChange} type='Number' defaultValue={contato.telefone}/>
                 </div>
             );
         });
