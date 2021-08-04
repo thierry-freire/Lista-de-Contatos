@@ -45,12 +45,24 @@ class Lista extends React.Component {
     }
 
     excluirContato = async(contato) => {
-        alert('Contato ' + contato._id + ' apagado com sucesso.');
+        var data = ({
+            _id: contato._id
+        });
+
+        var retorno = await axios.post('/api/excluir', data);
+        var mensagem = retorno.data;
+
+        if (retorno.status === 200) {
+            alert(mensagem.message);
+        } else {
+            alert(`Erro ${retorno.status}: ${retorno.statusText}`);
+        }
+
     }
 
     editarContato = async(contato) => {
         if (this.state.nomeNovo === '' && this.state.telefoneNovo === '') {
-            alert('Não existem alterações feitas');
+            alert('Não existem alterações feitas.');
         } else {
             var data = ({
                 _id: contato._id,
