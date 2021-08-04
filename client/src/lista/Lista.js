@@ -28,7 +28,7 @@ class Lista extends React.Component {
                 <div className='Contato' key={index}>
                     <div className="ContatoHeader">
                         <input className='NomeContato' id={'nome' + contato._id} name='nomeNovo' onChange={this.handleChange} type='String' defaultValue={contato.nome}/>
-                        <button className='Editar' id={'editar' + contato._id} onClick={() => {this.editarContato(contato)}}>Editar</button>
+                        <button className='Editar' onClick={() => {this.editarContato(contato)}}>Editar</button>
                         <button className='Excluir' onClick={() => {this.excluirContato(contato)}}>Excluir</button>
                     </div>
                     <input className='TelefoneContato' id={'telefone' + contato._id} name='telefoneNovo' onChange={this.handleChange} type='Number' defaultValue={contato.telefone}/>
