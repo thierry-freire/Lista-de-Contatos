@@ -5,7 +5,7 @@ const contatosSchema = require("./models/contatos.js");
 
 app.use(express.json());
 
-app.route("/api/cadastro").post(async (req, res) => {
+app.post("/api/cadastro", async (req, res) => {
   var mensagem = '';
 
   try {
@@ -18,22 +18,38 @@ app.route("/api/cadastro").post(async (req, res) => {
   res.json({ message: mensagem });
 });
 
-app.route("api/editar").post(async (req, res) => {
+app.post("/api/editar", async (req, res) => {
   var mensagem = '';
   var query = {_id: req.body._id};
   
   await contatosSchema.updateOne(query, req.body, function(err, res) {
+    mensagem = 'Contato editado com sucesso!';
+    
+    if (err) {
+      mensagem = err.message;
+    }
+
+  });
+
+  res.status(200).json({message: mensagem});
+});
+
+app.post("/api/excluir", async (req, res) => {
+  var mensagem = '';
+  var query = {_id: req.body._id};
+  
+  await contatosSchema.deleteOne(query, function(err, res) {
     if (err) {
       mensagem = err.message;
     } else {
-      mensagem = 'Contato editado com sucesso!';
+      mensagem = 'Contato excluído com sucesso!';
     }
   });
 
   res.status(200).json({message: mensagem});
 });
 
-app.route("/api/listar").get(async (req, res) => {
+app.get("/api/listar", async (req, res) => {
   var data = await contatosSchema.find({});
   res.status(200).send(data);
 });
