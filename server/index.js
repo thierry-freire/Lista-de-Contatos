@@ -22,9 +22,8 @@ app.post("/api/editar", async (req, res) => {
   var mensagem = '';
   var query = {_id: req.body._id};
   
-  await contatosSchema.updateOne(query, req.body, function(err, res) {
-    mensagem = 'Contato editado com sucesso!';
-    
+  mensagem = 'Contato editado com sucesso!';
+  await contatosSchema.updateOne(query, req.body, function(err, res) {  
     if (err) {
       mensagem = err.message;
     }
